@@ -24,7 +24,7 @@ IMDb Dataset: Ensure the dataset is downloaded and structured appropriately (e.g
 
 1) Installation
 Clone the Repository:
-git clone https://github.com/yourusername/sentiment-analysis-bert.git
+git clone https://github.com/racoope70/sentiment-analysis-bert.git
 
 2) Navigate to Project Directory:
 cd sentiment-analysis-bert
