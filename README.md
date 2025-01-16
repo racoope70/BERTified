@@ -1,13 +1,17 @@
 Sentiment Analysis with BERT
 Overview
-This project leverages the power of the BERT model to perform sentiment analysis on the IMDb dataset. By processing text data, tokenizing it using BERT's tokenizer, and fine-tuning the model on labeled sentiment data, the project classifies movie reviews as either positive or negative. The analysis demonstrates a significant improvement in accuracy, achieving a test accuracy of 89%.
+This project leverages the BERT model to perform sentiment analysis on the IMDb dataset. By processing text data, tokenizing it using BERT's tokenizer, and fine-tuning the model on labeled sentiment data, the project classifies movie reviews as either positive or negative. The analysis demonstrates a significant improvement in performance, achieving a test accuracy of 91%. Updates include handling class imbalance with SMOTE and evaluating model performance using advanced metrics and visualizations.
 
 Features
 Data Preprocessing: Efficiently loads and cleans the IMDb dataset, preparing reviews for analysis through tokenization.
+Class Imbalance Handling: Utilizes SMOTE (Synthetic Minority Oversampling Technique) to generate synthetic samples for the minority class, improving fairness and performance.
 Model Training: Fine-tunes the BERT model for sentiment classification using Hugging Face’s Trainer API.
-Evaluation: Assesses model performance, achieving ~89% test accuracy.
-Interactive Notebook: Includes a Jupyter Notebook, IMDB_Sentiment_Analysis_with_BERT.ipynb, that combines all steps for data preprocessing, training, and evaluation in an interactive format.
-Memory Optimization: Incorporates strategies to handle large datasets effectively without overwhelming memory resources.
+Evaluation: Incorporates metrics such as confusion matrix, ROC-AUC, and precision-recall curves, along with visualizations to interpret performance.
+Interactive Notebooks:
+IMDB_Sentiment_Analysis_with_BERT.ipynb: Original notebook for the initial analysis and training.
+Results_Rebalance_Dataset.ipynb: Enhanced notebook version that applies SMOTE to address class imbalance and includes advanced evaluation metrics and visualizations.
+Memory Optimization: Implements strategies to handle large datasets efficiently without overwhelming resources.
+
 Requirements
 Python Version: 3.7+
 Libraries:
@@ -47,6 +51,7 @@ Usage
 Option 1: Use the Jupyter Notebook
 Open notebooks/IMDB_Sentiment_Analysis_with_BERT.ipynb to run the project interactively.
 This notebook covers all steps, from loading the data to evaluating the model.
+
 Option 2: Use the Command Line Scripts
 Prepare the Data:
 
@@ -72,10 +77,14 @@ python src/evaluation.py
 
 Model Performance
 Training Accuracy: ~93%
-Test Accuracy: ~89%
-This marks a significant improvement from the initial accuracy of 69%.
+Test Accuracy: ~91%
+Metrics:
+Confusion Matrix: Detailed breakdown of true/false positives and negatives.
+ROC-AUC: Strong discrimination with an AUC score of 0.95.
+Precision-Recall Curve: Highlights the trade-off between precision and recall, especially for imbalanced datasets.
+
 Contributing
-Contributions are welcome! Fork the repository, make your changes, and submit a pull request. We appreciate all contributions to improving the project.
+Contributions are welcome! Fork the repository, make your changes, and submit a pull request. All contributions to improving the project are appreciated.
 
 License
 This project is licensed under the MIT License. See the LICENSE file for more details.
@@ -83,8 +92,3 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 Acknowledgments
 Hugging Face: For the transformers library.
 IMDb: For providing the dataset.
-Contact
-For questions or feedback, please contact Richard Cooper via LinkedIn or through email cooperrichard21@gmail.com.
-
-
-
