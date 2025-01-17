@@ -77,6 +77,10 @@ python src/evaluation.py
 
 ![image](https://github.com/user-attachments/assets/a64f2a6b-a38a-44a7-a709-e52f2e3528f6)
 
+![image](https://github.com/user-attachments/assets/1483aced-57b1-462c-9be2-1b283e52a3bf)
+
+![image](https://github.com/user-attachments/assets/71653915-b035-4154-a5f8-c1c76ad0c4cd)
+
 
 Model Performance
 Training Accuracy: ~93%
