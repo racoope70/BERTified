@@ -71,5 +71,35 @@ sentiment-analysis-bert/
   - Open notebooks/IMDB_Sentiment_Analysis_with_BERT.ipynb.
   - Follow the cells in order to load data, preprocess, train the model, and evaluate performance.
 **Option 2:** Command Line Scripts
-Prepare Data
-Place the IMDb dataset in the data/ folder (ensure correct structure, e.g., aclImdb/train and aclImdb/test).
+1. **Prepare Data**
+  - Place the IMDb dataset in the data/ folder (ensure correct structure, e.g., aclImdb/train and aclImdb/test).
+    
+2. **Data Preprocessing**  
+   ```bash
+   python src/data_preprocessing.py
+
+3. **Train the Model**  
+   ```bash
+   python src/model_training.py
+   
+4. **Evaluate Performance**  
+   ```bash
+   python src/evaluation.py
+
+**Model Performance**
+**Training Accuracy:** ~93%
+**Test Accuracy:** ~91%
+**Confusion Matrix**
+
+****True Negatives:** **1065
+**False Positives:** 112
+False Negatives: 71
+True Positives: 752
+**Key Metrics**
+
+ROC-AUC: ~0.97 (strong class separation)
+Precision: 0.87
+Recall: 0.91
+F1-Score: 0.89
+Overall, these results confirm robust sentiment classification performance, balancing the detection of true positives with minimizing false alerts.
+
