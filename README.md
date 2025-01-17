@@ -75,6 +75,9 @@ bash
 Copy code
 python src/evaluation.py
 
+![image](https://github.com/user-attachments/assets/a64f2a6b-a38a-44a7-a709-e52f2e3528f6)
+
+
 Model Performance
 Training Accuracy: ~93%
 Test Accuracy: ~91%
