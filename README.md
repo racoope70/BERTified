@@ -45,6 +45,8 @@ This project leverages the **BERT** model to perform sentiment analysis on the *
    pip install -r requirements.txt
 Make sure you have Python 3.7+ installed.
 
+# Project Structure
+
 sentiment-analysis-bert/
 |
 ├── data/                      # IMDb dataset (if provided)
