@@ -5,12 +5,13 @@
 2. [Features](#features)  
 3. [Installation](#installation)  
 4. [Project Structure](#project-structure)  
-5. [Usage](#usage)  
-6. [Model Performance](#model-performance)  
-7. [Real-World Potential & Tangible Benefits](#real-world-potential--tangible-benefits)  
-8. [Further Innovations & Expansion Plans](#further-innovations--expansion-plans)  
-9. [License](#license)  
-10. [Acknowledgments](#acknowledgments)
+5. [Usage](#usage)
+6. [Visualizations & Results](#Visualizations-and-Results)  
+7. [Model Performance](#model-performance)  
+8. [Real-World Potential & Tangible Benefits](#real-world-potential--tangible-benefits)  
+9. [Further Innovations & Expansion Plans](#further-innovations--expansion-plans)  
+10. [License](#license)  
+11. [Acknowledgments](#acknowledgments)
 
 ---
 
