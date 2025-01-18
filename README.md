@@ -45,7 +45,7 @@ This project leverages the **BERT** model to perform sentiment analysis on the *
    pip install -r requirements.txt
 Make sure you have Python 3.7+ installed.
 
-# Project Structure
+## Project Structure
 
 sentiment-analysis-bert/
 |
@@ -68,7 +68,9 @@ sentiment-analysis-bert/
 ├── LICENSE                    # License file
 ├── README.md                  # Project overview (this file)
 
-**Usage**
+---
+
+## Usage
 **Option 1:** Jupyter Notebook
   - Open notebooks/IMDB_Sentiment_Analysis_with_BERT.ipynb.
   - Follow the cells in order to load data, preprocess, train the model, and evaluate performance.
@@ -88,38 +90,40 @@ sentiment-analysis-bert/
    ```bash
    python src/evaluation.py
 
+---
+
 ## Visualizations & Results
 
 After training and evaluation, you should see output similar to the following:
 
-### Confusion Matrix
+**Confusion Matrix**
 ![image](https://github.com/user-attachments/assets/26a4db32-57e4-4743-a97c-9d1e4e88086b)
 
 This image shows the distribution of true positives, false positives, true negatives, and false negatives.
 
-## ROC Curve
+**ROC Curve**
 ![image](https://github.com/user-attachments/assets/73d20aaa-eff0-4fb2-834d-307b9a394281)
 
 This plot illustrates the trade-off between the true positive rate (TPR) and false positive rate (FPR) across various threshold settings.
 
-## Precision-Recall Curve
+**Precision-Recall Curve**
 ![image](https://github.com/user-attachments/assets/1cded52a-28cd-40f0-a9c6-f93f023701b7)
 
 Highlights how precision and recall vary across different thresholds and is especially useful for imbalanced datasets.
 
+---
+
 ## Model Performance
 
-### Training Accuracy (~93%)
-**What it means**:  
+**Training Accuracy (~93%)**
 The proportion of correct predictions the model makes on the training data.  
 A higher percentage indicates the model has learned the training examples well.
 
-### Test Accuracy (~91%)
-**What it means**:  
+**Test Accuracy (~91%)**
 The proportion of correct predictions on data the model has never seen before.  
 This number reflects the model’s ability to generalize.
 
-## Confusion Matrix
+**Confusion Matrix**
 
 - **True Negatives (TN = 1065)**
   - The model correctly predicted the “negative” class when the actual label was negative.
@@ -134,33 +138,23 @@ This number reflects the model’s ability to generalize.
   - The model correctly predicted the “positive” class when the actual label was positive.
 
 **Key Metrics**
-- **ROC-AUC:** ~0.97 (strong class separation)
-- **Precision:** 0.87
-- **Recall:** 0.91
-- **F1-Score:** 0.89
-Overall, these results confirm robust sentiment classification performance, balancing the detection of true positives with minimizing false alerts.
-
-## Key Metrics
-
-### ROC-AUC (~0.97)
-**What it means**:  
+**ROC-AUC (~0.97)**
 Measures how well the model can distinguish between classes across all thresholds.  
 A score closer to 1.0 indicates excellent separation.
 
-### Precision (0.87)
-**What it means**:  
+**Precision (~0.87)** 
 Out of all predicted positives, 87% are truly positive.  
 Higher precision means fewer false alarms.
 
-### Recall (0.91)
-**What it means**:  
+**Recall (~0.91)**
 Out of all actual positives, 91% are correctly identified.  
 Higher recall means fewer missed positive cases.
 
-### F1-Score (0.89)
-**What it means**:  
+**F1-Score (~0.89)**  
 The harmonic mean of precision and recall, balancing both measures.  
 A higher F1 indicates better overall classification performance.
+
+---
 
 ## Real-World Potential & Tangible Benefits
 This solution can extend beyond movie reviews to any domain where analyzing large volumes of text-based feedback is crucial—such as **social media monitoring**, **product reviews**, or **brand reputation management**. Automating sentiment analysis enables organizations to:
