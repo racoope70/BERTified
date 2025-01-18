@@ -93,7 +93,7 @@ sentiment-analysis-bert/
 
 ---
 
-## Visualizations & Results
+## Visualizations and Results
 
 After training and evaluation, you should see output similar to the following:
 
