@@ -16,7 +16,7 @@
 ---
 
 ## Overview
-This project leverages the **BERT** model to perform sentiment analysis on the **IMDb** dataset. By processing text data, tokenizing it with BERT’s tokenizer, and fine-tuning on labeled sentiment data, the model classifies movie reviews as either positive or negative—achieving a **91%** test accuracy. Recent updates address class imbalance via **SMOTE**, while comprehensive evaluation uses advanced metrics and visualizations to assess model performance.
+This project leverages the **BERT** model to perform sentiment analysis on the **IMDb** dataset. By processing text data, tokenizing it with BERT’s tokenizer, and fine-tuning on labeled sentiment data, the model classifies movie reviews as either positive or negative. The final model achieves 90.8% accuracy on the test set, with a precision of 88.5%, recall of 93.6%, and an F1 score of 0.91, demonstrating strong and balanced classification performance. Recent updates address class imbalance via **SMOTE**, while comprehensive evaluation uses advanced metrics and visualizations to assess model performance.
 
 ---
 
