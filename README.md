@@ -16,7 +16,7 @@
 ---
 
 ## Overview
-This project leverages the **BERT** model to perform sentiment analysis on the **IMDb** dataset. By processing text data, tokenizing it with BERT’s tokenizer, and fine-tuning on labeled sentiment data, the model classifies movie reviews as either positive or negative. The final model achieves 90.8% accuracy on the test set, with a precision of 88.5%, recall of 93.6%, and an F1 score of 0.91, demonstrating strong and balanced classification performance. Recent updates address class imbalance via **SMOTE**, while comprehensive evaluation uses advanced metrics and visualizations to assess model performance.
+This project fine-tunes the **BERT** model for sentiment analysis on the **IMDb** movie review dataset. Text data is tokenized using BERT’s tokenizer and trained on labeled sentiment data to classify reviews as positive or negative. The baseline model achieves 90.8% accuracy on the test set, with a precision of 88.5%, recall of 93.6%, and an F1 score of 0.91, demonstrating strong and balanced classification performance. A subsequent experiment addresses class imbalance using **SMOTE**, resulting in 91% accuracy and improved class balance, with comprehensive evaluation using multiple performance metrics and visual diagnostics.
 
 ---
 
@@ -116,13 +116,15 @@ Highlights how precision and recall vary across different thresholds and is espe
 
 ## Model Performance
 
-**Training Accuracy (~93%)**
-The proportion of correct predictions the model makes on the training data.  
-A higher percentage indicates the model has learned the training examples well.
+**Test Accuracy (~91%)**  
+Represents the proportion of correct predictions on unseen data and reflects the model’s ability to generalize.
 
-**Test Accuracy (~91%)**
-The proportion of correct predictions on data the model has never seen before.  
-This number reflects the model’s ability to generalize.
+### Experimental Results Summary
+| Experiment | Accuracy | Precision | Recall | F1 |
+|-----------|----------|-----------|--------|----|
+| Baseline BERT (no rebalancing) | 0.9075 | 0.8849 | 0.9356 | 0.9095 |
+| Rebalanced Dataset (SMOTE) | 0.91 | 0.87 | 0.91 | 0.89 |
+
 
 **Confusion Matrix**
 
