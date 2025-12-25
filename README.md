@@ -6,7 +6,7 @@
 3. [Installation](#installation)  
 4. [Project Structure](#project-structure)  
 5. [Usage](#usage)
-6. [Visualizations & Results](#Visualizations-and-Results)  
+6. [Visualizations & Results](#visualizations-and-results)
 7. [Model Performance](#model-performance)  
 8. [Real-World Potential & Tangible Benefits](#real-world-potential--tangible-benefits)  
 9. [Further Innovations & Expansion Plans](#further-innovations--expansion-plans)  
@@ -16,7 +16,18 @@
 ---
 
 ## Overview
-This project fine-tunes the **BERT** model for sentiment analysis on the **IMDb** movie review dataset. Text data is tokenized using BERT’s tokenizer and trained on labeled sentiment data to classify reviews as positive or negative. The baseline model achieves 90.8% accuracy on the test set, with a precision of 88.5%, recall of 93.6%, and an F1 score of 0.91, demonstrating strong and balanced classification performance. A subsequent experiment addresses class imbalance using **SMOTE**, resulting in 91% accuracy and improved class balance, with comprehensive evaluation using multiple performance metrics and visual diagnostics.
+
+This project fine-tunes a **BERT (Bidirectional Encoder Representations from Transformers)** model for binary sentiment classification on the **IMDb movie review dataset**. Movie reviews are tokenized using BERT’s tokenizer and trained via supervised learning to predict **positive** or **negative** sentiment.
+
+Two modeling configurations are evaluated:
+
+- A **baseline BERT model** trained on a randomly sampled dataset  
+- A **rebalanced BERT model** designed to improve class symmetry and optimize precision–recall trade-offs  
+
+The baseline model achieves **89.7% accuracy**, with strong recall and excellent ranking performance (**ROC–AUC = 0.97**), indicating robust separation between sentiment classes.  
+The rebalanced model improves overall accuracy to **91%**, increases precision, and produces a more balanced confusion matrix while maintaining a high ROC–AUC score.
+
+Together, these results highlight the impact of class distribution on classification behavior and demonstrate how targeted rebalancing can improve decision quality without sacrificing model discrimination.
 
 ---
 
@@ -26,7 +37,7 @@ This project fine-tunes the **BERT** model for sentiment analysis on the **IMDb*
 - **Model Training**  
   - Fine-tunes a pre-trained BERT model on the labeled sentiment data.  
 - **Class Imbalance Handling**  
-  - Employs **SMOTE** (Synthetic Minority Oversampling Technique) to mitigate skewed class distributions.  
+  - Applies dataset rebalancing techniques to mitigate skewed class distributions and improve precision–recall trade-offs.
 - **Advanced Metrics & Visualizations**  
   - Analyzes performance using metrics such as **confusion matrix**, **ROC-AUC**, **precision**, **recall**, **F1-score**, and visual plots.
 
@@ -57,8 +68,8 @@ sentiment-analysis-bert/
 │   ├── evaluation.py
 |
 ├── notebooks/                 # Jupyter Notebooks
-│   ├── IMDB_Sentiment_Analysis_with_BERT.ipynb
-│   ├── Results_Rebalance_Dataset.ipynb
+│   ├── imdb_bert_sentiment_baseline.ipynb
+│   ├── imdb_bert_sentiment_rebalanced.ipynb
 |
 ├── images/                    # Images for visualizations/plots
 │   ├── confusion_matrix.png
@@ -73,7 +84,7 @@ sentiment-analysis-bert/
 
 ## Usage
 **Option 1:** Jupyter Notebook
-  - Open notebooks/IMDB_Sentiment_Analysis_with_BERT.ipynb.
+  - Open `notebooks/imdb_bert_sentiment_baseline.ipynb` or `imdb_bert_sentiment_rebalanced.ipynb`.
   - Follow the cells in order to load data, preprocess, train the model, and evaluate performance.
 **Option 2:** Command Line Scripts
 1. **Prepare Data**
@@ -95,90 +106,133 @@ sentiment-analysis-bert/
 
 ## Visualizations and Results
 
-After training and evaluation, you should see output similar to the following:
+To ensure a consistent and transparent comparison, both the **baseline** and **rebalanced** BERT models are evaluated using the same diagnostic plots:
 
-**Confusion Matrix**
-![image](https://github.com/user-attachments/assets/26a4db32-57e4-4743-a97c-9d1e4e88086b)
+- Confusion Matrix  
+- ROC Curve  
+- Precision–Recall Curve  
 
-This image shows the distribution of true positives, false positives, true negatives, and false negatives.
+These visualizations provide insight into error distribution, ranking performance, and precision–recall trade-offs beyond aggregate metrics.
 
-**ROC Curve**
-![image](https://github.com/user-attachments/assets/73d20aaa-eff0-4fb2-834d-307b9a394281)
+---
 
-This plot illustrates the trade-off between the true positive rate (TPR) and false positive rate (FPR) across various threshold settings.
+### Baseline Model (No Rebalancing)
 
-**Precision-Recall Curve**
-![image](https://github.com/user-attachments/assets/1cded52a-28cd-40f0-a9c6-f93f023701b7)
+**Confusion Matrix**  
+![Baseline Confusion Matrix](images/Baseline%20Confusion%20Matrix.png)
 
-Highlights how precision and recall vary across different thresholds and is especially useful for imbalanced datasets.
+The baseline model demonstrates a recall-oriented behavior, correctly identifying most positive reviews while allowing a higher number of false positives.
+
+**ROC Curve (AUC = 0.97)**  
+![Baseline ROC Curve](images/Baseline%20ROC%20Curve.png)
+
+A high ROC–AUC indicates excellent class separability and strong ranking performance across all thresholds.
+
+**Precision–Recall Curve**  
+![Baseline Precision-Recall Curve](images/Baseline%20Precision%20Recall%20Curve.png)
+
+The curve shows consistently high recall, confirming the model’s effectiveness at capturing positive sentiment.
+
+---
+
+### Rebalanced Model
+
+**Confusion Matrix**  
+![Rebalanced Confusion Matrix](images/Rebalance%20Confusion%20Matrix.png)
+
+After rebalancing, the confusion matrix becomes more symmetric, reducing false positives and improving overall classification balance.
+
+**ROC Curve (AUC ≈ 0.97)**  
+![Rebalanced ROC Curve](images/Rebalanced%20ROC%20Curve.png)
+
+The rebalanced model maintains strong discriminative power, with ROC–AUC comparable to the baseline model.
+
+**Precision–Recall Curve**  
+![Rebalanced Precision-Recall Curve](images/Rebalance%20Precision%20Recall.png)
+
+Precision improves across higher recall regions, indicating fewer false alarms and a more conservative positive prediction strategy.
+
+### Interpretation
+
+- The **baseline model** prioritizes recall, making it effective for applications where missing positive sentiment is costly.  
+- The **rebalanced model** improves precision and overall accuracy, resulting in a more evenly distributed error profile.  
+
+Together, these visualizations highlight the trade-offs between recall and precision and demonstrate the impact of dataset rebalancing on model behavior.
+
 
 ---
 
 ## Model Performance
 
-**Test Accuracy (~91%)**  
-Represents the proportion of correct predictions on unseen data and reflects the model’s ability to generalize.
+### Baseline Model (No Rebalancing)
 
-### Experimental Results Summary
-| Experiment | Accuracy | Precision | Recall | F1 |
-|-----------|----------|-----------|--------|----|
-| Baseline BERT (no rebalancing) | 0.9075 | 0.8849 | 0.9356 | 0.9095 |
-| Rebalanced Dataset (SMOTE) | 0.91 | 0.87 | 0.91 | 0.89 |
+- **Accuracy:** 89.7%  
+- **Precision:** 87.2%  
+- **Recall:** 93.0%  
+- **F1 Score:** 0.90  
+- **ROC–AUC:** 0.967  
 
+This configuration prioritizes **recall**, making it effective at capturing positive sentiment while minimizing false negatives. The high ROC–AUC indicates strong ranking performance across classification thresholds.
 
-**Confusion Matrix**
+---
 
-- **True Negatives (TN = 1065)**
-  - The model correctly predicted the “negative” class when the actual label was negative.
+### Rebalanced Model
 
-- **False Positives (FP = 112)**
-  - The model incorrectly predicted the “positive” class when the actual label was negative.
+- **Accuracy:** 91.0%  
+- **Precision:** 94.0%  
+- **Recall:** 88.0%  
+- **F1 Score:** 0.91  
+- **ROC–AUC:** ~0.97  
 
-- **False Negatives (FN = 71)**
-  - The model incorrectly predicted the “negative” class when the actual label was positive.
+The rebalanced model improves overall **accuracy and precision** while maintaining strong recall, resulting in a more **symmetric confusion matrix** and better precision–recall trade-offs.
 
-- **True Positives (TP = 752)**
-  - The model correctly predicted the “positive” class when the actual label was positive.
+---
 
-**Key Metrics**
-**ROC-AUC (~0.97)**
-Measures how well the model can distinguish between classes across all thresholds.  
-A score closer to 1.0 indicates excellent separation.
+### Experimental Summary
 
-**Precision (~0.87)** 
-Out of all predicted positives, 87% are truly positive.  
-Higher precision means fewer false alarms.
+| Experiment        | Accuracy | Precision | Recall | F1  | ROC–AUC |
+|------------------|----------|-----------|--------|-----|---------|
+| Baseline BERT    | 0.897    | 0.872     | 0.930  | 0.90| 0.97    |
+| Rebalanced BERT  | 0.910    | 0.940     | 0.880  | 0.91| ~0.97   |
 
-**Recall (~0.91)**
-Out of all actual positives, 91% are correctly identified.  
-Higher recall means fewer missed positive cases.
-
-**F1-Score (~0.89)**  
-The harmonic mean of precision and recall, balancing both measures.  
-A higher F1 indicates better overall classification performance.
 
 ---
 
 ## Real-World Potential & Tangible Benefits
-This solution can extend beyond movie reviews to any domain where analyzing large volumes of text-based feedback is crucial—such as **social media monitoring**, **product reviews**, or **brand reputation management**. Automating sentiment analysis enables organizations to:
 
-- **Respond Quickly**: Track shifts in public opinion in near-real time.  
-- **Enhance Strategies**: Refine marketing campaigns or product launches based on feedback trends.  
-- **Optimize Engagement**: Tailor interactions to better match user sentiment and needs.
+This sentiment analysis pipeline generalizes beyond movie reviews to any domain involving large-scale, unstructured text data, including **product reviews**, **social media streams**, **customer feedback**, and **brand reputation monitoring**.
+
+By automating sentiment classification with a transformer-based model, organizations can:
+
+- **Monitor opinion dynamics at scale**  
+  Continuously track sentiment trends across high-volume text sources in near real time.
+
+- **Reduce manual labeling and review costs**  
+  Replace labor-intensive qualitative analysis with consistent, reproducible model-driven insights.
+
+- **Support data-driven decision-making**  
+  Surface actionable signals for marketing strategy, product feedback loops, customer experience optimization, and risk detection.
+
+The modular design of the pipeline enables straightforward adaptation to new domains, datasets, or downstream analytics workflows, making it suitable for both research experimentation and production-oriented applications.
 
 ---
-
 ## Further Innovations & Expansion Plans
-- **Explore Diverse Architectures**  
-  Experiment with **DistilBERT**, **RoBERTa**, or **GPT** to boost performance or efficiency.  
-- **Data Augmentation**  
-  Employ text augmentation techniques (e.g., back-translation, synonym replacement) to enhance model robustness, especially for smaller datasets.  
-- **Hyperparameter Tuning**  
-  Adjust learning rate, batch size, and other parameters to refine accuracy and speed.  
-- **Domain Adaptation**  
-  Test this pipeline on additional datasets, such as **Twitter data** or **customer service logs**, to validate its versatility in different contexts.
 
----
+Potential extensions of this work focus on improving efficiency, robustness, and domain transferability:
+
+- **Model Efficiency & Deployment Trade-offs**  
+  Evaluate lighter transformer variants (e.g., **DistilBERT**) to reduce inference latency and memory footprint in production environments.
+
+- **Robustness via Data Augmentation**  
+  Apply controlled text augmentation strategies (e.g., back-translation, paraphrasing) to improve generalization under distribution shift.
+
+- **Targeted Hyperparameter Optimization**  
+  Systematically tune learning rate schedules, batch sizes, and regularization parameters to balance convergence stability and training efficiency.
+
+- **Domain Transfer & Adaptation**  
+  Adapt the pipeline to new text domains (e.g., social media or customer support data) to assess cross-domain performance degradation and retraining requirements.
+
+These extensions are designed to support realistic deployment scenarios and ongoing model lifecycle management rather than isolated benchmark improvements.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
